@@ -77,28 +77,47 @@ if (gamepad_is_supported())
         if (gamepad_button_value(0,gp_shoulderrb) &gt; 0)
             {
             boost = gamepad_button_value(0,gp_shoulderrb) * 5;
+            // if boost bar is not zero, allow player to boost
             if (boost_bar &gt; 0)
                 {
+                //if boost value is greater than 6, set nanite speed to a max speed boosted speed limit; prevents player from moving too fast
                 if (boost &gt; 6)
                     {
                     nanite_speed = 5 * 6;
                     x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
                     y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
-                    boost_bar -= 1
+                    boost_bar -= 1                        
                     }
+                //else allow the nanite speed to be boosted up to a boost value below 6
                 else
                     {
-                    nanite_speed = 5 * boost;
+                    nanite_speed = 5 * (boost + 1);
                     x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
                     y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
                     boost_bar -= 1
                     }
                 }
+            //else boost_bar is less than zero can player can not use boost
+            else
+                {                
+                boost_bar = 0;
+                nanite_speed = 5;
+                x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
+                y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
+                }
+                
             }
         else
             {
             nanite_speed = 5;
-            boost_bar += 1;
+            if (boost_bar &gt;= 50)
+                {
+                boost_bar = 50 //set boost bar max limit
+                }
+            else 
+                {                
+                boost_bar += 0.25; //refill boost bar grandually
+                }
             x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
             y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
             }
