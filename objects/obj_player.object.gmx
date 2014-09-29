@@ -10,6 +10,20 @@
   <events>
     <event eventtype="0" enumb="0">
       <action>
+        <libid>0</libid>
+        <id>0</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
         <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
@@ -34,6 +48,20 @@ globalvar nanite_speed;
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>0</libid>
+        <id>0</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="3" enumb="0">
@@ -76,17 +104,28 @@ if (gamepad_is_supported())
 
         if (gamepad_button_value(0,gp_shoulderrb) &gt; 0)
             {
-            boost = gamepad_button_value(0,gp_shoulderrb) * 5;
+            
+            
+            if (boost_bar &gt;= 50)
+                {
+                boost_bar = 50 //set boost bar max limit
+                }
+            else 
+                {                
+                boost_bar += 0.25; //refill boost bar grandually
+                }
+            
+            boost = gamepad_button_value(0,gp_shoulderrb) * 2;
             // if boost bar is not zero, allow player to boost
             if (boost_bar &gt; 0)
                 {
-                //if boost value is greater than 6, set nanite speed to a max speed boosted speed limit; prevents player from moving too fast
-                if (boost &gt; 6)
+                //if boost value is greater than 6, set max nanite speed; prevents player from moving too fast when boosting
+                if (boost &gt;= 6)
                     {
                     nanite_speed = 5 * 6;
                     x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
                     y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
-                    boost_bar -= 1                        
+                    boost_bar -= boost                        
                     }
                 //else allow the nanite speed to be boosted up to a boost value below 6
                 else
@@ -94,7 +133,7 @@ if (gamepad_is_supported())
                     nanite_speed = 5 * (boost + 1);
                     x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
                     y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
-                    boost_bar -= 1
+                    boost_bar -= boost
                     }
                 }
             //else boost_bar is less than zero can player can not use boost
