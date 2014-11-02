@@ -4,28 +4,65 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_player_shoot</sound>
+    <sound>sound\snd_explosion</sound>
+    <sound>sound\snd_music</sound>
+  </sounds>
   <sprites name="sprites">
-    <sprites name="Red Nanites">
-      <sprite>sprites\spr_engineer</sprite>
-      <sprite>sprites\spr_fighter</sprite>
+    <sprites name="Projectiles">
+      <sprite>sprites\spr_bullet_red</sprite>
+    </sprites>
+    <sprites name="Thrusts">
+      <sprite>sprites\spr_thrust_regular</sprite>
+    </sprites>
+    <sprites name="Explosions">
+      <sprite>sprites\spr_explosion</sprite>
+    </sprites>
+    <sprites name="Enemies">
+      <sprites name="Red Nanites">
+        <sprite>sprites\spr_fighter</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Player">
+      <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_player_thrust</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\back_lab_blue</background>
+    <background>background\back_debris</background>
+    <background>background\blue_yellow_cells</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\obj_buttons</object>
-    <object>objects\obj_view</object>
-    <object>objects\obj_fighter</object>
+    <objects name="Projectiles">
+      <object>objects\obj_bullet_red</object>
+      <object>objects\obj_projectiles</object>
+    </objects>
+    <objects name="Explosions">
+      <object>objects\obj_explosion</object>
+    </objects>
+    <objects name="Enemies">
+      <object>objects\obj_enemy_parent</object>
+      <object>objects\obj_fighter</object>
+    </objects>
+    <objects name="Player">
+      <object>objects\obj_player</object>
+      <object>objects\obj_player_thrust</object>
+    </objects>
+    <objects name="Game">
+      <object>objects\obj_view</object>
+      <object>objects\obj_buttons</object>
+      <object>objects\obj_obstacle</object>
+      <object>objects\obj_music</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_level_01</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41911.0584675116</constant>
+    <constant name="GM_build_date">41939.1872173148</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

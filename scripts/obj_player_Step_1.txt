@@ -1,0 +1,101 @@
+///player controls
+
+// set to boost_charging to false; when player depletes boost_bar then this value will be set to true and player cannot boost until boost charged to a certain level
+var boost_charging = false;
+
+
+// are controllers supported om this platform?
+if (gamepad_is_supported())
+    {         
+    // controller plugged in?
+    if (gamepad_is_connected(0))                                                 
+        {
+        x_axis = gamepad_axis_value(0,gp_axislh)
+        y_axis = gamepad_axis_value(0,gp_axislv)
+
+        // left stick moves object
+        // image_angle = point_direction(0,0,gamepad_axis_value(0,gp_axislh),-gamepad_axis_value(0,gp_axislv));
+        image_angle = point_direction(0,0,gamepad_axis_value(0,gp_axislh),gamepad_axis_value(0,gp_axislv));
+        
+        // save image_angle; used to set the point direction of the player when player stops moving
+        last_image_angle = image_angle;        
+
+        // if right trigger is pressed, run boost routine
+        if (gamepad_button_value(0,gp_shoulderrb) > 0)
+            {                                
+            boost = gamepad_button_value(0,gp_shoulderrb) * 2;  // set boost value to equal trigger value times 2
+            if (boost_charging = false) // if boost is done charging then player can boost
+                {            
+                // if boost bar is greater than zero, allow player to boost
+                if (boost_bar > 0)
+                    {
+                    //if boost value is greater than 6, set max nanite speed; prevents player from moving too fast when boosting
+                    if (boost >= 6)
+                        {
+                        nanite_speed = 5 * 6; //30 is the max value
+                        x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
+                        y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
+                        boost_bar -= boost                        
+                        }
+                    //else allow the nanite speed to be boosted up to a boost value below 6
+                    else
+                        {
+                        nanite_speed = 5 * (boost + 1); //15 is the max value; pressing the right trigger produces a value between 0.1 to 1.0
+                        x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
+                        y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
+                        boost_bar -= boost
+                        }
+                    }
+                }
+                
+            //else boost_bar is less than zero (because it failed the 'if' statement above' and player can not use boost
+            else
+                {               
+                boost_charging = true;
+                nanite_speed = 5;
+                x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
+                y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
+                
+                if (boost_bar >= 50)
+                    {
+                    boost_bar = 50 //set boost bar max limit
+                    boost_charging = false;
+                    }
+                if (boost_charging = true)
+                    {                
+                    boost_bar += 0.25; //refill boost bar grandually
+                    }
+                }
+                
+            }
+ 
+
+        else
+            {
+            if (boost_bar >= 50)
+                {
+                boost_bar = 50 //set boost bar max limit
+                }
+            else 
+                {                
+                boost_bar += 0.25; //refill boost bar grandually
+                }
+           
+            nanite_speed = 5;   
+
+            x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
+            y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
+            }
+
+
+        // left stick button resets position
+        if (gamepad_button_check_pressed(0,gp_stickl))     
+            {
+            x = xstart;
+            y = ystart;
+            }
+        
+            
+        }
+    }
+

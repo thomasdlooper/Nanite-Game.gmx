@@ -61,8 +61,10 @@
         {
             // continuous presses - activates as long as button is held down
                               
+            /*
             if (gamepad_button_check(0,gp_face1))                                      // A creates snow
                 effect_create_above(ef_snow,0,0,0,c_lime);
+            */
             
             if (gamepad_button_check(0,gp_face2))                                      // B creates smoke                                       
                 effect_create_above(ef_smokeup,320,240,2,c_red);               
@@ -151,6 +153,8 @@ if (gamepad_is_supported())                                                     
         draw_text(4,376,"Down: " + string(gamepad_button_check(0,gp_padd)));                         // D-pad down
         draw_text(4,392,"Nanite speed: " + string(nanite_speed)); //Show value of nanite speed
         draw_text(4,408,"Boost bar: " + string(boost_bar)); //Show value of boost bar
+        draw_text(4,424,"Boost: " + string(boost)); //Show boost value
+        draw_text(4,440,"speed: " + string(speed)); //Show value of speed
         }
 
     else
