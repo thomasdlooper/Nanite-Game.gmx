@@ -12,6 +12,10 @@
   <sprites name="sprites">
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet_red</sprite>
+      <sprite>sprites\spr_bullet_blue</sprite>
+      <sprites name="enemy projectiles">
+        <sprite>sprites\spr_bullet_enemy</sprite>
+      </sprites>
     </sprites>
     <sprites name="Thrusts">
       <sprite>sprites\spr_thrust_regular</sprite>
@@ -22,6 +26,14 @@
     <sprites name="Enemies">
       <sprites name="Red Nanites">
         <sprite>sprites\spr_fighter</sprite>
+      </sprites>
+      <sprites name="asteroids">
+        <sprite>sprites\spr_asteroid</sprite>
+      </sprites>
+      <sprites name="Boss">
+        <sprite>sprites\spr_boss_01</sprite>
+        <sprite>sprites\spr_boss_cannons</sprite>
+        <sprite>sprites\spr_cannon</sprite>
       </sprites>
     </sprites>
     <sprites name="Player">
@@ -39,6 +51,7 @@
     <objects name="Projectiles">
       <object>objects\obj_bullet_red</object>
       <object>objects\obj_projectiles</object>
+      <object>objects\obj_bullet_enemy</object>
     </objects>
     <objects name="Explosions">
       <object>objects\obj_explosion</object>
@@ -46,6 +59,14 @@
     <objects name="Enemies">
       <object>objects\obj_enemy_parent</object>
       <object>objects\obj_fighter</object>
+      <object>objects\obj_fighter_wave</object>
+      <object>objects\obj_asteroid</object>
+      <objects name="boss">
+        <object>objects\obj_boss_01</object>
+        <object>objects\obj_cannon_streaming</object>
+        <object>objects\obj_cannon</object>
+        <object>objects\obj_boss_bullet</object>
+      </objects>
     </objects>
     <objects name="Player">
       <object>objects\obj_player</object>
@@ -55,7 +76,7 @@
       <object>objects\obj_view</object>
       <object>objects\obj_buttons</object>
       <object>objects\obj_obstacle</object>
-      <object>objects\obj_music</object>
+      <object>objects\obj_superparent</object>
     </objects>
   </objects>
   <rooms name="rooms">

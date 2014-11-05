@@ -56,7 +56,7 @@ boost_expended = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>is_firing</string>
+            <string>player_is_firing</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -106,7 +106,7 @@ boost_expended = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>is_firing</string>
+            <string>player_is_firing</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -310,7 +310,7 @@ if (gamepad_is_supported())
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>is_firing</string>
+            <string>player_is_firing</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -352,7 +352,7 @@ if (gamepad_is_supported())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>is_firing</string>
+            <string>player_is_firing</string>
           </argument>
           <argument>
             <kind>0</kind>
