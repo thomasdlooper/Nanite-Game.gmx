@@ -22,6 +22,8 @@
     </sprites>
     <sprites name="Explosions">
       <sprite>sprites\spr_explosion</sprite>
+      <sprite>sprites\spr_explosion_sm</sprite>
+      <sprite>sprites\spr_explosion_lg</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprites name="Red Nanites">
@@ -38,13 +40,19 @@
     </sprites>
     <sprites name="Player">
       <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_lifecounter</sprite>
+      <sprite>sprites\spr_player_hurt</sprite>
       <sprite>sprites\spr_player_thrust</sprite>
     </sprites>
+    <sprite>sprites\spr_enter</sprite>
+    <sprite>sprites\spr_win</sprite>
+    <sprite>sprites\spr_gameover</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\back_lab_blue</background>
     <background>background\back_debris</background>
     <background>background\blue_yellow_cells</background>
+    <background>background\blue_yellow_cells_big</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
@@ -55,6 +63,8 @@
     </objects>
     <objects name="Explosions">
       <object>objects\obj_explosion</object>
+      <object>objects\obj_explosion_lg</object>
+      <object>objects\obj_explosion_sm</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy_parent</object>
@@ -63,7 +73,6 @@
       <object>objects\obj_asteroid</object>
       <objects name="boss">
         <object>objects\obj_boss_01</object>
-        <object>objects\obj_cannon_streaming</object>
         <object>objects\obj_cannon</object>
         <object>objects\obj_boss_bullet</object>
       </objects>
@@ -71,12 +80,18 @@
     <objects name="Player">
       <object>objects\obj_player</object>
       <object>objects\obj_player_thrust</object>
+      <object>objects\obj_thrust</object>
+      <object>objects\obj_player_hurt</object>
     </objects>
     <objects name="Game">
       <object>objects\obj_view</object>
       <object>objects\obj_buttons</object>
       <object>objects\obj_obstacle</object>
       <object>objects\obj_superparent</object>
+      <object>objects\obj_enter</object>
+      <object>objects\obj_win</object>
+      <object>objects\obj_gameover</object>
+      <object>objects\obj_scorekeeper</object>
     </objects>
   </objects>
   <rooms name="rooms">

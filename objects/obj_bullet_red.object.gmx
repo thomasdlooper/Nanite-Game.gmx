@@ -65,7 +65,7 @@
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_explosion</object>
+            <object>obj_explosion_sm</object>
           </argument>
           <argument>
             <kind>0</kind>
