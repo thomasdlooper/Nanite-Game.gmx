@@ -8,6 +8,7 @@
     <sound>sound\snd_player_shoot</sound>
     <sound>sound\snd_explosion</sound>
     <sound>sound\snd_music</sound>
+    <sound>sound\music_title</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Projectiles">
@@ -53,11 +54,13 @@
     <background>background\back_debris</background>
     <background>background\blue_yellow_cells</background>
     <background>background\blue_yellow_cells_big</background>
+    <background>background\bg_title</background>
+    <background>background\bg_clouds</background>
+    <background>background\nanite_wars</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <objects name="Projectiles">
-      <object>objects\obj_bullet_red</object>
       <object>objects\obj_projectiles</object>
       <object>objects\obj_bullet_enemy</object>
     </objects>
@@ -81,7 +84,7 @@
       <object>objects\obj_player</object>
       <object>objects\obj_player_thrust</object>
       <object>objects\obj_thrust</object>
-      <object>objects\obj_player_hurt</object>
+      <object>objects\obj_player_bullet</object>
     </objects>
     <objects name="Game">
       <object>objects\obj_view</object>
@@ -92,10 +95,13 @@
       <object>objects\obj_win</object>
       <object>objects\obj_gameover</object>
       <object>objects\obj_scorekeeper</object>
+      <object>objects\obj_title_screen</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_title</room>
     <room>rooms\rm_level_01</room>
+    <room>rooms\rm_level_02</room>
   </rooms>
   <constants number="2">
     <constant name="GM_build_date">41939.1872173148</constant>

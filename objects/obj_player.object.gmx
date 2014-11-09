@@ -37,7 +37,7 @@ globalvar boost_expended;
 boost_expended = false;
 
 globalvar player_is_firing;
-is_firing = false;
+player_is_firing = false;
 </string>
           </argument>
         </arguments>
@@ -533,7 +533,7 @@ if (gamepad_is_supported())
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_bullet_red</object>
+            <object>obj_player_bullet</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -561,7 +561,7 @@ if (gamepad_is_supported())
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_bullet_red</object>
+            <object>obj_player_bullet</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -1451,7 +1451,7 @@ if (gamepad_is_supported())
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 400</string>
+            <string>view_xport[0] + 300</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -1877,7 +1877,7 @@ if (gamepad_is_supported())
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_bullet_red</object>
+            <object>obj_player_bullet</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -1905,7 +1905,7 @@ if (gamepad_is_supported())
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_bullet_red</object>
+            <object>obj_player_bullet</object>
           </argument>
           <argument>
             <kind>0</kind>
