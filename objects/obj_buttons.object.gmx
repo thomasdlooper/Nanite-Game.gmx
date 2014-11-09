@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>{   
+            <string>/// Test for gamepad
+{   
     window_set_caption("Controller Test v.2");
 
     gamepad_set_axis_deadzone(0,0.25); // set dead zones for axes (UNDOCUMENTED FUNCTION)
@@ -54,48 +55,48 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>{
-    if (gamepad_is_supported())                                                       // are controllers supported om this platform?
+            <string>/// Xbox button actions
+if (gamepad_is_supported())                                                       // are controllers supported om this platform?
     {         
-        if (gamepad_is_connected(0))                                                 // controller plugged in?
-        {
-            // continuous presses - activates as long as button is held down
-                              
-            /*
-            if (gamepad_button_check(0,gp_face1))                                      // A creates snow
-                effect_create_above(ef_snow,0,0,0,c_lime);
-            */
+    if (gamepad_is_connected(0))                                                 // controller plugged in?
+    {
+        // continuous presses - activates as long as button is held down
+                          
+        /*
+        if (gamepad_button_check(0,gp_face1))                                      // A creates snow
+            effect_create_above(ef_snow,0,0,0,c_lime);
+        */
+        
+        if (gamepad_button_check(0,gp_face2))                                      // B creates smoke                                       
+            effect_create_above(ef_smokeup,320,240,2,c_red);               
+        
+        if (gamepad_button_check(0,gp_face3))                                      // x creates rain                                       
+            effect_create_above(ef_rain,0,0,2,c_blue);
             
-            if (gamepad_button_check(0,gp_face2))                                      // B creates smoke                                       
-                effect_create_above(ef_smokeup,320,240,2,c_red);               
+        if (gamepad_button_check(0,gp_face4))                                      // y creates cloud                                       
+            effect_create_above(ef_cloud,random_range(0,640),random_range(0,480),0,c_yellow); 
+        
+        /*
+        background_hspeed[1] = -4 * gamepad_button_value(0,gp_shoulderlb);         // LT and RT make backgrounds to scroll  
+        background_hspeed[2] = 4 * gamepad_button_value(0,gp_shoulderrb); 
+        */
+        
+        // instantaneous presses - only triggers once per press
+        
+        if (gamepad_button_check_pressed(0,gp_shoulderl))                              // LB creates fireworks                                                                     
+            effect_create_above(ef_firework,random_range(0,640),random_range(0,480),1,c_fuchsia); 
+        
+        if (gamepad_button_check_pressed(0,gp_shoulderr))                              // RB creates explosion                                                                   
+            effect_create_above(ef_explosion,random_range(0,640),random_range(0,480),1,make_color_rgb(255,128,0)); 
             
-            if (gamepad_button_check(0,gp_face3))                                      // x creates rain                                       
-                effect_create_above(ef_rain,0,0,2,c_blue);
-                
-            if (gamepad_button_check(0,gp_face4))                                      // y creates cloud                                       
-                effect_create_above(ef_cloud,random_range(0,640),random_range(0,480),0,c_yellow); 
-            
-            /*
-            background_hspeed[1] = -4 * gamepad_button_value(0,gp_shoulderlb);         // LT and RT make backgrounds to scroll  
-            background_hspeed[2] = 4 * gamepad_button_value(0,gp_shoulderrb); 
-            */
-            
-            // instantaneous presses - only triggers once per press
-            
-            if (gamepad_button_check_pressed(0,gp_shoulderl))                              // LB creates fireworks                                                                     
-                effect_create_above(ef_firework,random_range(0,640),random_range(0,480),1,c_fuchsia); 
-            
-            if (gamepad_button_check_pressed(0,gp_shoulderr))                              // RB creates explosion                                                                   
-                effect_create_above(ef_explosion,random_range(0,640),random_range(0,480),1,make_color_rgb(255,128,0)); 
-                
-            if (gamepad_button_check_pressed(0,gp_select))                                // Back creates rings                                                                    
-                effect_create_above(ef_ring,random_range(0,640),random_range(0,480),1,make_color_rgb(0,128,255)); 
-            
-            if (gamepad_button_check_pressed(0,gp_start))                                  // Start creates stars                                                                   
-                effect_create_above(ef_star,random_range(0,640),random_range(0,480),2,make_color_rgb(128,255,0)); 
+        if (gamepad_button_check_pressed(0,gp_select))                                // Back creates rings                                                                    
+            effect_create_above(ef_ring,random_range(0,640),random_range(0,480),1,make_color_rgb(0,128,255)); 
+        
+        if (gamepad_button_check_pressed(0,gp_start))                                  // Start creates stars                                                                   
+            effect_create_above(ef_star,random_range(0,640),random_range(0,480),2,make_color_rgb(128,255,0)); 
         }
     }   
-}
+
 </string>
           </argument>
         </arguments>
@@ -123,7 +124,7 @@ if (gamepad_is_supported())                                                     
     {         
     if (gamepad_is_connected(0))                                                 // controller plugged in?
         {           
-        draw_set_color(c_black);                 
+        draw_set_color(c_green);                 
         draw_text(4,4,"Gamepad plugged in");                                        // yes
         draw_text(4,20,"Name: " + gamepad_get_description(0));                                // name of controller
         draw_text(4,36,"Number of axes: " + string(gamepad_axis_count(0)));              // total number of axes (= 5 for Xbox 360 controllers)
@@ -154,7 +155,8 @@ if (gamepad_is_supported())                                                     
         draw_text(4,392,"Nanite speed: " + string(nanite_speed)); //Show value of nanite speed
         draw_text(4,408,"Boost bar: " + string(boost_bar)); //Show value of boost bar
         draw_text(4,424,"Boost: " + string(boost)); //Show boost value
-        draw_text(4,440,"speed: " + string(speed)); //Show value of speed
+        draw_text(4,440,"Speed: " + string(speed)); //Show value of speed
+        draw_text(4,456,"Level: " + string(level)); //Show value of level
         }
 
     else

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Setup View
-globalvar gvX, gvY, gvW, gvH, gvObj;
+globalvar gvX, gvY, gvW, gvH, gvObj,level;
 gvX = view_xview[0];
 gvY = view_yview[0];
 gvW = view_wview[0];
@@ -38,25 +38,29 @@ gvObj = view_object[0];
       </action>
       <action>
         <libid>1</libid>
-        <id>211</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_sound</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>6</kind>
-            <sound>snd_music</sound>
-          </argument>
-          <argument>
-            <kind>3</kind>
-            <string>1</string>
+            <kind>1</kind>
+            <string>///Play music
+if audio_is_playing(!(snd_music))
+    {
+    audio_stop_all();
+    var snd = audio_play_sound(snd_music,0,true);
+    audio_sound_gain(snd,.7,0);
+    }
+
+</string>
           </argument>
         </arguments>
       </action>
@@ -148,7 +152,7 @@ if room != 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///View
+            <string>///Initialize global variables, configure view
 globalvar gvXStart, gvYStart, gvWStart, gvHStart, gvObjStart;
 gvXStart = view_xview[0];
 gvYStart = view_yview[0];
@@ -156,10 +160,15 @@ gvWStart = view_wview[0];
 gvHStart = view_hview[0];
 gvObjStart = view_object[0];
 
-if instance_exists(gvObj) {
- view_xview[0] = min(max(0,gvX),room_width-view_wview[0]);
- view_yview[0] = min(max(0,gvY),room_height-view_hview[0]);
-}
+
+
+if instance_exists(gvObj) 
+    {
+    view_xview[0] = min(max(0,gvX),room_width-view_wview[0]);
+    view_yview[0] = min(max(0,gvY),room_height-view_hview[0]);
+    }
+
+
 </string>
           </argument>
         </arguments>
