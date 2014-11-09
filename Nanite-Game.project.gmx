@@ -9,6 +9,8 @@
     <sound>sound\snd_explosion</sound>
     <sound>sound\snd_music</sound>
     <sound>sound\music_title</sound>
+    <sound>sound\m_boss_01</sound>
+    <sound>sound\m_boss_02</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Projectiles">
@@ -35,7 +37,7 @@
       </sprites>
       <sprites name="Boss">
         <sprite>sprites\spr_boss_01</sprite>
-        <sprite>sprites\spr_boss_cannons</sprite>
+        <sprite>sprites\spr_boss_02</sprite>
         <sprite>sprites\spr_cannon</sprite>
       </sprites>
     </sprites>
@@ -81,7 +83,9 @@
       <object>objects\obj_asteroid</object>
       <objects name="boss">
         <object>objects\obj_boss_01</object>
+        <object>objects\obj_boss_02</object>
         <object>objects\obj_cannon</object>
+        <object>objects\obj_cannon_b2</object>
         <object>objects\obj_boss_bullet</object>
       </objects>
     </objects>

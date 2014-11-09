@@ -91,13 +91,13 @@
         <exetype>1</exetype>
         <functionname>action_set_alarm</functionname>
         <codestring></codestring>
-        <whoName>obj_cannon</whoName>
+        <whoName>obj_cannon_b2</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>choose(60,75,90)</string>
+            <string>choose(5,10)</string>
           </argument>
           <argument>
             <kind>4</kind>
@@ -141,7 +141,7 @@
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_cannon</object>
+            <object>obj_cannon_b2</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -245,7 +245,7 @@
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_cannon</object>
+            <object>obj_cannon_b2</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -349,7 +349,7 @@
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_cannon</object>
+            <object>obj_cannon_b2</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -453,7 +453,7 @@
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_cannon</object>
+            <object>obj_cannon_b2</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -557,7 +557,7 @@
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>obj_cannon</object>
+            <object>obj_cannon_b2</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -681,13 +681,13 @@
         <exetype>1</exetype>
         <functionname>action_set_alarm</functionname>
         <codestring></codestring>
-        <whoName>obj_cannon</whoName>
+        <whoName>obj_cannon_b2</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>choose(60,75,90)</string>
+            <string>choose(5,10)</string>
           </argument>
           <argument>
             <kind>4</kind>
@@ -717,7 +717,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>obj_boss_01.x + lengthdir_x(b_radius, p_angle)</string>
+            <string>obj_boss_02.x + lengthdir_x(b_radius, p_angle)</string>
           </argument>
         </arguments>
       </action>
@@ -741,7 +741,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>obj_boss_01.y+ lengthdir_y(b_radius, p_angle)</string>
+            <string>obj_boss_02.y+ lengthdir_y(b_radius, p_angle)</string>
           </argument>
         </arguments>
       </action>
