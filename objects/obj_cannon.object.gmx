@@ -97,7 +97,7 @@
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>choose(60,75,90)</string>
+            <string>choose(40,50,60)</string>
           </argument>
           <argument>
             <kind>4</kind>
@@ -687,7 +687,7 @@
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>choose(60,75,90)</string>
+            <string>choose(40,50,60)</string>
           </argument>
           <argument>
             <kind>4</kind>

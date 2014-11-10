@@ -119,7 +119,7 @@ if (gamepad_is_supported())                                                     
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// Draw Debug
 if (gamepad_is_supported())                                                       // are controllers supported om this platform?
     {         
     if (gamepad_is_connected(0))                                                 // controller plugged in?

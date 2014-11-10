@@ -87,7 +87,7 @@ player_is_firing = false;
           </argument>
           <argument>
             <kind>0</kind>
-            <string>5</string>
+            <string>50</string>
           </argument>
         </arguments>
       </action>
@@ -112,6 +112,30 @@ player_is_firing = false;
           <argument>
             <kind>0</kind>
             <string>false</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>301</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_alarm</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>fire_rate</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -472,9 +496,9 @@ if (gamepad_is_supported())
             if (boost_bar &gt;= 10)
                 {
                 boost_expended = false;
-                if (boost_bar &gt;=150) // Set Boost Bar Max Level
+                if (boost_bar &gt;= 95) // Set Boost Bar Max Level
                     {
-                    boost_bar = 150;
+                    boost_bar = 95;
                     }
                 }                
             if (boost_bar &lt;= 0)
@@ -954,28 +978,6 @@ if (gamepad_is_supported())
       </action>
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Goto title room
-room_goto(rm_title);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>424</id>
         <kind>2</kind>
         <userelative>0</userelative>
@@ -1257,28 +1259,6 @@ room_goto(rm_title);
           <argument>
             <kind>0</kind>
             <string>view_yport[0] + 300</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Goto title room
-room_goto(rm_title);
-</string>
           </argument>
         </arguments>
       </action>
@@ -1612,28 +1592,6 @@ room_goto(rm_title);
       </action>
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Goto title room
-room_goto(rm_title);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>424</id>
         <kind>2</kind>
         <userelative>0</userelative>
@@ -1929,28 +1887,6 @@ room_goto(rm_title);
           <argument>
             <kind>0</kind>
             <string>view_yport[0] + 300</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Goto title room
-room_goto(rm_title);
-</string>
           </argument>
         </arguments>
       </action>
