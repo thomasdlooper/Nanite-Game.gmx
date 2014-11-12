@@ -671,7 +671,7 @@ if (gamepad_is_supported())
     // controller plugged in?
     if (gamepad_is_connected(0))                                                 
         {
-        if (gamepad_button_check(0,gp_face1))
+        if (gamepad_button_check_pressed(0,gp_face1))
             {
             player_is_firing = true;
             }
