@@ -13,6 +13,7 @@
     <sound>sound\m_boss_02</sound>
   </sounds>
   <sprites name="sprites">
+    <sprite>sprites\spr_cube</sprite>
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet_red</sprite>
       <sprite>sprites\spr_bullet_blue</sprite>

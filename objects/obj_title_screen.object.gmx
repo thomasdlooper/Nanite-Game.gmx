@@ -119,7 +119,7 @@ audio_stop_all();
             <kind>1</kind>
             <string>/// Create random asteroids moving to the right
 
-var x_asteroid = 1380;
+var x_asteroid = 1280;
 var y_asteroid = random_range(10,800);
 instance_create(x_asteroid,y_asteroid,obj_asteroid);
 

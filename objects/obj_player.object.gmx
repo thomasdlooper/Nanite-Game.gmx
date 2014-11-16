@@ -571,7 +571,7 @@ if (gamepad_is_supported())
                         nanite_speed = 5 * 6; //30 is the max value
                         
                         //instance_change(obj_player_thrust,0); //change player object to object with thrust animation
-                        x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
+                        x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);                        
                         y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
                         boost_bar -= boost                        
                         }
@@ -2692,6 +2692,32 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="9" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>speed</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>10</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="10" enumb="39">
       <action>
         <libid>1</libid>
@@ -2746,6 +2772,32 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           <argument>
             <kind>0</kind>
             <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>speed</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>-10</string>
           </argument>
         </arguments>
       </action>
