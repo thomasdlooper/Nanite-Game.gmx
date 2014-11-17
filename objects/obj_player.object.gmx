@@ -553,8 +553,7 @@ if (gamepad_is_supported())
         image_angle = point_direction(0,0,gamepad_axis_value(0,gp_axislh),gamepad_axis_value(0,gp_axislv));
         
         // save image_angle; used to set the point direction of the player when player stops moving
-        last_image_angle = image_angle;
-  
+        last_image_angle = image_angle;  
 
         // if right trigger is pressed, run boost routine
         if (gamepad_button_value(0,gp_shoulderrb) &gt; 0)
