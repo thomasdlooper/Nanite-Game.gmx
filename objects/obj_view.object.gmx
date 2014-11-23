@@ -32,6 +32,8 @@ gvY = view_yview[0];
 gvW = view_wview[0];
 gvH = view_hview[0];
 gvObj = view_object[0];
+
+
 </string>
           </argument>
         </arguments>
@@ -83,6 +85,23 @@ if audio_is_playing(!(snd_music))
           <argument>
             <kind>1</kind>
             <string>///View
+
+// If player exists set view to follow player
+if instance_exists(obj_player)
+    {
+    gvObj = obj_player;
+    }
+// If victory/win object exists follow it
+if instance_exists(obj_win)
+    {
+    gvObj = obj_win;
+    }
+// if gameover object exists follow it
+if instance_exists(obj_gameover)
+    {
+    gvObj = obj_gameover;
+    }
+
 if view_wview[0] != gvW || view_hview[0] != gvH 
     {
      var tempW, tempH;
