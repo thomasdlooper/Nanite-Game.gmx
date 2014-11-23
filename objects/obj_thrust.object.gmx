@@ -69,11 +69,11 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 300</string>
+            <string>view_xview[0] + 360</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_yport[0] + 300</string>
+            <string>view_yview[0] + 300</string>
           </argument>
         </arguments>
       </action>

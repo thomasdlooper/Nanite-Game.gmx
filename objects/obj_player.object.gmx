@@ -1202,11 +1202,11 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 400</string>
+            <string>view_xview[0] + 360</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_yport[0] + 300</string>
+            <string>view_yview[0] + 300</string>
           </argument>
         </arguments>
       </action>
@@ -1502,11 +1502,11 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 400</string>
+            <string>view_xview[0] + 360</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_yport[0] + 300</string>
+            <string>view_yview[0] + 300</string>
           </argument>
         </arguments>
       </action>
@@ -1844,11 +1844,11 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 400</string>
+            <string>view_xview[0] + 360</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_yport[0] + 300</string>
+            <string>view_yview[0] + 300</string>
           </argument>
         </arguments>
       </action>
@@ -2158,11 +2158,11 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 300</string>
+            <string>view_xview[0] + 360</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>view_yport[0] + 300</string>
+            <string>view_yview[0] + 300</string>
           </argument>
         </arguments>
       </action>
