@@ -11,6 +11,10 @@
     <sound>sound\music_title</sound>
     <sound>sound\m_boss_01</sound>
     <sound>sound\m_boss_02</sound>
+    <sound>sound\m_victory</sound>
+    <sound>sound\m_gameover</sound>
+    <sound>sound\m_boss_03</sound>
+    <sound>sound\snd_player_boost</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_cube</sprite>
@@ -28,6 +32,8 @@
       <sprite>sprites\spr_explosion</sprite>
       <sprite>sprites\spr_explosion_sm</sprite>
       <sprite>sprites\spr_explosion_lg</sprite>
+      <sprite>sprites\spr_particles</sprite>
+      <sprite>sprites\spr_explosions_sheet</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprites name="Red Nanites">
@@ -47,6 +53,8 @@
       <sprite>sprites\spr_lifecounter</sprite>
       <sprite>sprites\spr_player_hurt</sprite>
       <sprite>sprites\spr_player_thrust</sprite>
+      <sprite>sprites\spr_player_boost_ghost</sprite>
+      <sprite>sprites\spr_player_boost</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_enter</sprite>
@@ -68,6 +76,9 @@
     <background>background\bg_galaxy</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
     <objects name="Projectiles">
       <object>objects\obj_projectiles</object>
@@ -93,7 +104,6 @@
     </objects>
     <objects name="Player">
       <object>objects\obj_player</object>
-      <object>objects\obj_player_thrust</object>
       <object>objects\obj_thrust</object>
       <object>objects\obj_player_bullet</object>
     </objects>
@@ -114,6 +124,7 @@
   <timelines name="timelines">
     <timeline>timelines\tl_level1</timeline>
     <timeline>timelines\tl_level2</timeline>
+    <timeline>timelines\tl_level3</timeline>
   </timelines>
   <rooms name="rooms">
     <room>rooms\rm_title</room>

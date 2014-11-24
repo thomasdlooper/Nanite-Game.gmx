@@ -105,6 +105,30 @@ if (gamepad_is_supported())                                                     
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
+        <id>526</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_font</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>12</kind>
+            <font>font0</font>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -120,6 +144,7 @@ if (gamepad_is_supported())                                                     
           <argument>
             <kind>1</kind>
             <string>/// Draw Debug
+/*
 if (gamepad_is_supported())                                                       // are controllers supported om this platform?
     {         
     if (gamepad_is_connected(0))                                                 // controller plugged in?
@@ -165,6 +190,9 @@ if (gamepad_is_supported())                                                     
 
 else                                                                            // can't use gamepads
     draw_text(4,4,"Gamepads not supported on this platform");
+*/
+
+draw_text(view_xport[0] + 450,view_yport[0] + 750,"Boost: " + string(boost_bar)); //Show value of boost bar
 </string>
           </argument>
         </arguments>

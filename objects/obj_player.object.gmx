@@ -39,7 +39,16 @@ boost_expended = false;
 globalvar player_is_firing;
 player_is_firing = false;
 
-
+// Sprite Ghosting
+// http://gmc.yoyogames.com/index.php?showtopic=579884
+spr_trail_total=20 // Length of the trail
+for (i=0; i&lt;spr_trail_total; i+=1) // Set i to 0 then increment i 20 times in the same step; create each trail section
+{
+  spr_trail_x[i]=x // X
+  spr_trail_y[i]=y // Y
+  spr_trail_a[i]=1 // Alpha
+}
+spr_trail_num=0 // Counter index
 </string>
           </argument>
         </arguments>
@@ -245,6 +254,66 @@ player_is_firing = false;
           <argument>
             <kind>14</kind>
             <timeline>tl_level2</timeline>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>global.level</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>3</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>305</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_timeline_set</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>14</kind>
+            <timeline>tl_level3</timeline>
           </argument>
           <argument>
             <kind>0</kind>
@@ -537,7 +606,38 @@ if !instance_exists(obj_scorekeeper)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///player boost controls
+            <string>/// Sprite Ghosting Steps
+// Update latest trail coordinates and alpha
+spr_trail_x[spr_trail_num]=x
+spr_trail_y[spr_trail_num]=y
+spr_trail_a[spr_trail_num]=1
+spr_trail_num+=1
+
+// Restart counter
+if (spr_trail_num==spr_trail_total)
+spr_trail_num=0
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///player movement and boost controls
+
 instance_change(obj_player,0);
 // are controllers supported om this platform?
 if (gamepad_is_supported())
@@ -549,7 +649,6 @@ if (gamepad_is_supported())
         y_axis = gamepad_axis_value(0,gp_axislv)
 
         // left stick moves object
-        // image_angle = point_direction(0,0,gamepad_axis_value(0,gp_axislh),-gamepad_axis_value(0,gp_axislv));
         image_angle = point_direction(0,0,gamepad_axis_value(0,gp_axislh),gamepad_axis_value(0,gp_axislv));
         
         // save image_angle; used to set the point direction of the player when player stops moving
@@ -564,12 +663,20 @@ if (gamepad_is_supported())
                 // if boost bar is greater than zero, allow player to boost
                 if (boost_bar &gt; 0)
                     {
+                    sprite_index = spr_player_boost_ghost; //change player object to object with thrust animation
+                    
+                    if (!(audio_is_playing(snd_player_boost)))
+                        {
+                        var snd = audio_play_sound(snd_player_boost,0,false);
+                        audio_sound_gain(snd,.5,0);                        
+                        }                
+                    
                     //if boost value is greater than 6, set max nanite speed; prevents player from moving too fast when boosting
                     if (boost &gt;= 6)
                         {
                         nanite_speed = 5 * 6; //30 is the max value
                         
-                        //instance_change(obj_player_thrust,0); //change player object to object with thrust animation
+                        //instance_change(obj_player_thrust,false);                        
                         x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);                        
                         y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
                         boost_bar -= boost                        
@@ -578,7 +685,6 @@ if (gamepad_is_supported())
                     else
                         {
                         nanite_speed = 5 * (boost + 1); //15 is the max value; pressing the right trigger produces a value between 0.1 to 1.0
-                        //instance_change(obj_player_thrust,0); //change player object to object with thrust animation
                         x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
                         y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
                         boost_bar -= boost
@@ -592,7 +698,7 @@ if (gamepad_is_supported())
 
             //else boost_bar is less than zero then boost is expended (because it failed the 'if' statement above')
             else
-                {
+                {                
                 nanite_speed = 5;
                 x += gamepad_axis_value(0,gp_axislh) * (nanite_speed);
                 y += gamepad_axis_value(0,gp_axislv) * (nanite_speed);
@@ -603,6 +709,9 @@ if (gamepad_is_supported())
 
         else // If right trigger is not pressed (boost button) then move player without boost   
             {
+            sprite_index = spr_player; // if right-trigger not pressed or is released change sprite to player without thrust animation
+            audio_stop_sound(snd_player_boost);
+            
             // If the boost bar is 10 or higher then set boost_expended to false (allows player to use boost)
             if (boost_bar &gt;= 10)
                 {
@@ -629,7 +738,7 @@ if (gamepad_is_supported())
             }
 
 
-        // left stick button resets position
+        // left stick button resets position (jumps back to starting position)
         if (gamepad_button_check_pressed(0,gp_stickl))     
             {
             x = xstart;
@@ -883,82 +992,6 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           <argument>
             <kind>3</kind>
             <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>612</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_if_variable</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>global.level</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>2</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>2</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>224</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_another_room</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>11</kind>
-            <room>rm_title</room>
           </argument>
         </arguments>
       </action>
@@ -2501,6 +2534,54 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           <argument>
             <kind>0</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Sprite Ghosting Draw Event
+
+if (gamepad_button_value(0,gp_shoulderrb) &gt; 0)
+    {                                
+    boost = gamepad_button_value(0,gp_shoulderrb) * 2;  // set boost value to equal trigger value times 2
+    if (boost_expended = false) // if boost is not expended then player can use boost
+        {            
+        // if boost bar is greater than zero, allow player to boost
+        if (boost_bar &gt; 0)
+            {
+            draw_sprite_ext(sprite_index,0,x,y,1,1,image_angle,16777215,1)
+            // Draw trail and update alpha
+            for (i=0; i&lt;spr_trail_total; i+=1)
+                {
+                draw_sprite_ext(sprite_index,image_index,spr_trail_x[i],spr_trail_y[i],1,1,image_angle,c_white,spr_trail_a[i])
+                spr_trail_a[i]-=0.06
+                }
+            
+            }
+        }
+    }
+
+else
+    {
+    draw_sprite_ext(spr_player,image_index,x,y,1,1,image_angle,-1,1);
+    }
+</string>
           </argument>
         </arguments>
       </action>
