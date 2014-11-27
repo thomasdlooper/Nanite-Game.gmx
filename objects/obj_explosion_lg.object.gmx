@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="7">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -32,6 +32,8 @@ audio_sound_gain(snd,.2,0);
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
         <id>203</id>

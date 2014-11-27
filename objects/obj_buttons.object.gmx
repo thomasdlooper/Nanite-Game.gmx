@@ -144,44 +144,45 @@ if (gamepad_is_supported())                                                     
           <argument>
             <kind>1</kind>
             <string>/// Draw Debug
-/*
+
 if (gamepad_is_supported())                                                       // are controllers supported om this platform?
     {         
     if (gamepad_is_connected(0))                                                 // controller plugged in?
         {           
         draw_set_color(c_green);                 
-        draw_text(4,4,"Gamepad plugged in");                                        // yes
-        draw_text(4,20,"Name: " + gamepad_get_description(0));                                // name of controller
-        draw_text(4,36,"Number of axes: " + string(gamepad_axis_count(0)));              // total number of axes (= 5 for Xbox 360 controllers)
-        draw_text(4,52,"Number of button: " + string(gamepad_button_count(0)));         // total number of buttons (= 10 for Xbox 360 controllers)
+        draw_text_transformed(4,4,"Gamepad plugged in",.5,.5,0);                                        // yes
+        draw_text_transformed(4,20,"Name: " + gamepad_get_description(0),.5,.5,0);                                // name of controller
+        draw_text_transformed(4,36,"Number of axes: " + string(gamepad_axis_count(0)),.5,.5,0);              // total number of axes (= 5 for Xbox 360 controllers)
+        draw_text_transformed(4,52,"Number of button: " + string(gamepad_button_count(0)),.5,.5,0);         // total number of buttons (= 10 for Xbox 360 controllers)
                    
-        draw_text(4,70,"A: " + string(gamepad_button_check(0,gp_face1)));                // A
-        draw_text(4,86,"B: " + string(gamepad_button_check(0,gp_face2)));                // B
-        draw_text(4,102,"X: " + string(gamepad_button_check(0,gp_face1)));                // X
-        draw_text(4,118,"Y: " + string(gamepad_button_check(0,gp_face4)));                // Y
-        draw_text(4,134,"LB: " + string(gamepad_button_check(0,gp_shoulderl)));           // LB
-        draw_text(4,150,"RB: " + string(gamepad_button_check(0,gp_shoulderr)));           // RB
-        draw_text(4,166,"Back: " + string(gamepad_button_check(0,gp_select)));            // Back
-        draw_text(4,182,"Start: " + string(gamepad_button_check(0,gp_start)));            // Start
-        draw_text(4,198,"LS: " + string(gamepad_button_check(0,gp_stickl)));              // LS
-        draw_text(4,214,"RS: " + string(gamepad_button_check(0,gp_stickr)));              // RS
+        draw_text_transformed(4,70,"A: " + string(gamepad_button_check(0,gp_face1)),.5,.5,0);                // A
+        draw_text_transformed(4,86,"B: " + string(gamepad_button_check(0,gp_face2)),.5,.5,0);                // B
+        draw_text_transformed(4,102,"X: " + string(gamepad_button_check(0,gp_face1)),.5,.5,0);                // X
+        draw_text_transformed(4,118,"Y: " + string(gamepad_button_check(0,gp_face4)),.5,.5,0);                // Y
+        draw_text_transformed(4,134,"LB: " + string(gamepad_button_check(0,gp_shoulderl)),.5,.5,0);           // LB
+        draw_text_transformed(4,150,"RB: " + string(gamepad_button_check(0,gp_shoulderr)),.5,.5,0);           // RB
+        draw_text_transformed(4,166,"Back: " + string(gamepad_button_check(0,gp_select)),.5,.5,0);            // Back
+        draw_text_transformed(4,182,"Start: " + string(gamepad_button_check(0,gp_start)),.5,.5,0);            // Start
+        draw_text_transformed(4,198,"LS: " + string(gamepad_button_check(0,gp_stickl)),.5,.5,0);              // LS
+        draw_text_transformed(4,214,"RS: " + string(gamepad_button_check(0,gp_stickr)),.5,.5,0);              // RS
         
-        draw_text(4,230,"Left Stick X Tilt: " + string(gamepad_axis_value(0,gp_axislh)));          // left stick tilt
-        draw_text(4,246,"Left Stick Y Tilt: " + string(gamepad_axis_value(0,gp_axislv)));
-        draw_text(4,262,"Right Stick X Tilt: " + string(gamepad_axis_value(0,gp_axisrh)));         // right stick tilt
-        draw_text(4,278,"Right Stick Y Tilt: " + string(gamepad_axis_value(0,gp_axisrv)));
-        draw_text(4,294,"LT: " + string(gamepad_button_value(0,gp_shoulderlb)));                   // LT
-        draw_text(4,310,"RT: " + string(gamepad_button_value(0,gp_shoulderrb)));                   // RT
+        draw_text_transformed(4,230,"Left Stick X Tilt: " + string(gamepad_axis_value(0,gp_axislh)),.5,.5,0);          // left stick tilt
+        draw_text_transformed(4,246,"Left Stick Y Tilt: " + string(gamepad_axis_value(0,gp_axislv)),.5,.5,0);
+        draw_text_transformed(4,262,"Right Stick X Tilt: " + string(gamepad_axis_value(0,gp_axisrh)),.5,.5,0);         // right stick tilt
+        draw_text_transformed(4,278,"Right Stick Y Tilt: " + string(gamepad_axis_value(0,gp_axisrv)),.5,.5,0);
+        draw_text_transformed(4,294,"LT: " + string(gamepad_button_value(0,gp_shoulderlb)),.5,.5,0);                   // LT
+        draw_text_transformed(4,310,"RT: " + string(gamepad_button_value(0,gp_shoulderrb)),.5,.5,0);                   // RT
         
-        draw_text(4,328,"Left: " + string(gamepad_button_check(0,gp_padl)));                         // D-pad left
-        draw_text(4,344,"Right: " + string(gamepad_button_check(0,gp_padr)));                         // D-pad right
-        draw_text(4,360,"Up: " + string(gamepad_button_check(0,gp_padu)));                         // D-pad up
-        draw_text(4,376,"Down: " + string(gamepad_button_check(0,gp_padd)));                         // D-pad down
-        draw_text(4,392,"Nanite speed: " + string(nanite_speed)); //Show value of nanite speed
-        draw_text(4,408,"Boost bar: " + string(boost_bar)); //Show value of boost bar
-        draw_text(4,424,"Boost: " + string(boost)); //Show boost value
-        draw_text(4,440,"Speed: " + string(speed)); //Show value of speed
-        draw_text(4,456,"Level: " + string(level)); //Show value of level
+        draw_text_transformed(4,328,"Left: " + string(gamepad_button_check(0,gp_padl)),.5,.5,0);                         // D-pad left
+        draw_text_transformed(4,344,"Right: " + string(gamepad_button_check(0,gp_padr)),.5,.5,0);                         // D-pad right
+        draw_text_transformed(4,360,"Up: " + string(gamepad_button_check(0,gp_padu)),.5,.5,0);                         // D-pad up
+        draw_text_transformed(4,376,"Down: " + string(gamepad_button_check(0,gp_padd)),.5,.5,0);                         // D-pad down
+        draw_text_transformed(4,392,"Nanite speed: " + string(nanite_speed),.5,.5,0); //Show value of nanite speed
+        draw_text_transformed(4,408,"Boost bar: " + string(boost_bar),.5,.5,0); //Show value of boost bar
+        draw_text_transformed(4,424,"Boost: " + string(boost),.5,.5,0); //Show boost value
+        draw_text_transformed(4,440,"Speed: " + string(speed),.5,.5,0); //Show value of speed
+        draw_text_transformed(4,456,"Level: " + string(level),.5,.5,0); //Show value of level
+        draw_text_transformed(4,472,"image angle: " + string(image_angle),.5,.5,0); //Show value of image angle
         }
 
     else
@@ -190,7 +191,7 @@ if (gamepad_is_supported())                                                     
 
 else                                                                            // can't use gamepads
     draw_text(4,4,"Gamepads not supported on this platform");
-*/
+
 
 draw_text(view_xport[0] + 450,view_yport[0] + 750,"Boost: " + string(boost_bar)); //Show value of boost bar
 </string>

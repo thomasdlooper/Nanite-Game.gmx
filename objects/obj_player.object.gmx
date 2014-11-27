@@ -97,7 +97,7 @@ spr_trail_num=0 // Counter index
           </argument>
           <argument>
             <kind>0</kind>
-            <string>room_speed</string>
+            <string>room_speed/8</string>
           </argument>
         </arguments>
       </action>
@@ -773,20 +773,70 @@ if (gamepad_is_supported())
             <string>/// Player shoot button
 // are controllers supported om this platform?
 
-
 if (gamepad_is_supported())
     {         
     // controller plugged in?
     if (gamepad_is_connected(0))                                                 
-        {
-        if (gamepad_button_check_pressed(0,gp_face1))
+        {        
+        if (gamepad_button_check(0,gp_face1))
             {
+            
             player_is_firing = true;
+            alarm[0] = fire_rate;
+            
+            if (player_is_firing = true)
+                {
+                
+                //// Start ////
+                // Setup coorinates for player's top weapon (nanite's left weapon)
+                var aa,up,right,xx,yy;
+    
+                t_up = 13;             //how far up is the barrel from the origin of gun sprite        
+                t_right = 8;        //how far to the right is the barrel from the origin of gun sprite - im just guessing these values you'll need to tweek them        
+                t_xx = x;           //coordinates to spawn the bullet at        
+                t_yy = y;          //to start off with lets set these to the guns position
+                
+                t_xx += lengthdir_x(t_right,image_angle);         //move the bullet spawn to the right (relative to how the gun is rotated) for x
+                t_yy += lengthdir_y(t_right,image_angle);        //move the bullet spawn to the right (relative to how the gun is rotated) for y
+                t_xx += lengthdir_x(t_up,image_angle+90);      //move the bullet spawn up (relative to how the gun is rotated) for x
+                t_yy += lengthdir_y(t_up,image_angle+90);     //move the bullet spawn up (relative to how the gun is rotated) for y
+            
+                aa = instance_create(t_xx,t_yy,obj_player_bullet);             //create the bullet but use "aa" to remember it        
+                aa.image_angle = image_angle;                //rotate the bullet sprite        
+                aa.direction = image_angle;                       //set the direction the bullet will move        
+                aa.speed = 20;                                             //set the speed the bullet will move
+                
+                // Setup coorinates for player's bottom weapon (nanite's right weapon)
+                var bb,b_up,b_right,b_xx,b_yy;
+    
+                b_up = -13;             //how far up is the barrel from the origin of gun sprite        
+                b_right = 8;        //how far to the right is the barrel from the origin of gun sprite - im just guessing these values you'll need to tweek them        
+                b_xx = x;           //coordinates to spawn the bullet at        
+                b_yy = y;          //to start off with lets set these to the guns position
+                
+                b_xx += lengthdir_x(b_right,image_angle);         //move the bullet spawn to the right (relative to how the gun is rotated) for x
+                b_yy += lengthdir_y(b_right,image_angle);        //move the bullet spawn to the right (relative to how the gun is rotated) for y
+                b_xx += lengthdir_x(b_up,image_angle+90);      //move the bullet spawn up (relative to how the gun is rotated) for x
+                b_yy += lengthdir_y(b_up,image_angle+90);     //move the bullet spawn up (relative to how the gun is rotated) for y
+                
+                bb = instance_create(b_xx,b_yy,obj_player_bullet);  //create bullet for bottom weapon
+                bb.image_angle = image_angle;                //rotate the bullet sprite        
+                bb.direction = image_angle;                       //set the direction the bullet will move        
+                bb.speed = 20;                                             //set the speed the bullet will move
+                
+                //// END ////
+                
+                audio_play_sound(snd_player_shoot,0,false);
+                }
+                
+                
             }
+            
         else
             {
             player_is_firing = false;
             }
+        
         }
     }
 
@@ -821,7 +871,7 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Below should be set to "equal to true"</string>
+            <string>Below should be set to "If player_is_firing is equal to true"</string>
           </argument>
         </arguments>
       </action>
@@ -841,11 +891,11 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>player_is_firing</string>
+            <string>lives</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>true</string>
+            <string>-1</string>
           </argument>
           <argument>
             <kind>4</kind>
@@ -869,6 +919,26 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
       </action>
       <action>
         <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Next line should be set to "true"</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>611</id>
         <kind>6</kind>
         <userelative>-1</userelative>
@@ -887,7 +957,7 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>false</string>
+            <string>true</string>
           </argument>
         </arguments>
       </action>
@@ -1613,6 +1683,26 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
     <event eventtype="4" ename="obj_enemy_parent">
       <action>
         <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>below should be "is_hurt is equal to false"</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>612</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -1631,7 +1721,7 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>false</string>
+            <string>true</string>
           </argument>
           <argument>
             <kind>4</kind>
@@ -1955,6 +2045,26 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
     <event eventtype="4" ename="obj_bullet_enemy">
       <action>
         <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>below should be "is_hurt is equal to false"</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>612</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -1973,7 +2083,7 @@ if (keyboard_check(vk_space)) or (gamepad_button_check(0,gp_face1))
           </argument>
           <argument>
             <kind>0</kind>
-            <string>false</string>
+            <string>true</string>
           </argument>
           <argument>
             <kind>4</kind>
@@ -2565,7 +2675,7 @@ if (gamepad_button_value(0,gp_shoulderrb) &gt; 0)
         // if boost bar is greater than zero, allow player to boost
         if (boost_bar &gt; 0)
             {
-            draw_sprite_ext(sprite_index,0,x,y,1,1,image_angle,16777215,1)
+            draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,16777215,1)
             // Draw trail and update alpha
             for (i=0; i&lt;spr_trail_total; i+=1)
                 {
