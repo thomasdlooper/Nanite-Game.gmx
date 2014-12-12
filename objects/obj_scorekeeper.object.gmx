@@ -115,7 +115,7 @@
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>view_xport[0] + 10</string>
+            <string>view_xport[0] + 40</string>
           </argument>
           <argument>
             <kind>0</kind>
